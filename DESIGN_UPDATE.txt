@@ -1,0 +1,25 @@
+Open Debate — English Edition | Release Preparation
+
+Visual system:
+- Warm ivory and muted gold color palette.
+- Refined typography with Inter and Noto Sans JP fallbacks.
+- Updated navigation, panels, borders, buttons, and form surfaces.
+- Subtle route fade and panel entrance animations.
+
+Demo experience:
+- Six fictional sample debates across multiple categories.
+- Sample debate messages and comments for detail-page previews.
+- One-time localStorage seeding for a clean first-run experience.
+- Clear in-app notice that activity stays in the current browser.
+
+Reliability and product notes:
+- React and React DOM are regular application dependencies.
+- Added Vercel SPA rewrite configuration.
+- Added setup, deployment, seller QA, product listing, and draft license documents.
+- Clarified that nickname sign-in and admin access are demo-only, not production security.
+- The Terms page is sample wording and must be adapted before production use.
+
+Verification status:
+- 74 TypeScript/TSX source files passed syntax transpilation checks.
+- Local import paths and package declarations were checked.
+- A full npm install / Vite production build could not be run in this environment because the npm registry was unreachable (DNS error EAI_AGAIN). Run `npm install`, `npm run typecheck`, and `npm run build` before publishing.

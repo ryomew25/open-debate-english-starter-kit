@@ -1,0 +1,102 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+* { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html { background: var(--background); scroll-behavior: smooth; }
+body { min-width: 320px; letter-spacing: -0.012em; }
+::selection { background: color-mix(in srgb, var(--primary) 24%, transparent); color: var(--foreground); }
+
+button, a, input, textarea, select {
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease,
+    box-shadow 180ms ease, transform 180ms ease, opacity 180ms ease;
+}
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--ring) 30%, transparent);
+  outline-offset: 2px;
+}
+
+/* Calm editorial surfaces */
+.premium-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(52, 44, 29, 0.025), 0 5px 18px rgba(52, 44, 29, 0.035);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease, background-color 180ms ease;
+}
+.premium-panel:hover {
+  border-color: color-mix(in srgb, var(--primary) 26%, var(--border));
+}
+.dark .premium-panel { box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+.app-content { min-height: calc(100vh - 64px); background: var(--background); }
+.app-content [style*="box-shadow"] { box-shadow: 0 2px 12px rgba(52, 44, 29, 0.06) !important; }
+.dark .app-content [style*="box-shadow"] { box-shadow: 0 2px 12px rgba(0,0,0,.18) !important; }
+.app-content textarea, .app-content input:not([type="file"]), .app-content select {
+  border-color: var(--border);
+  background-color: var(--input-background);
+}
+.app-content textarea:focus, .app-content input:not([type="file"]):focus, .app-content select:focus {
+  border-color: color-mix(in srgb, var(--primary) 60%, var(--border));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 13%, transparent);
+}
+
+/* Sidebar and top bar: restrained, warm, and precise */
+nav.sticky.top-0 {
+  background: color-mix(in srgb, var(--card) 94%, transparent);
+  border-color: var(--border);
+  box-shadow: 0 1px 0 rgba(55, 48, 34, .025);
+}
+nav.sticky.top-0 > div > a:first-child span {
+  box-shadow: none !important;
+  border-radius: 9px;
+}
+aside.fixed {
+  background: var(--sidebar);
+  border-color: var(--sidebar-border);
+}
+aside.fixed a, aside.fixed button { border-radius: 8px; }
+aside.fixed a.bg-sidebar-accent {
+  box-shadow: inset 2px 0 0 var(--primary);
+  font-weight: 650;
+}
+
+/* Consistent warm buttons, category pills, and compact controls */
+.app-content button[class*="bg-primary"], .app-content a[class*="bg-primary"] {
+  box-shadow: 0 2px 7px color-mix(in srgb, var(--primary) 13%, transparent);
+}
+.app-content button[class*="bg-primary"]:hover, .app-content a[class*="bg-primary"]:hover {
+  filter: brightness(.97);
+  transform: translateY(-1px);
+}
+.app-content button[class*="border-primary"], .app-content button[class*="bg-secondary"] {
+  transition: all 180ms ease;
+}
+
+/* Route fade: each navigation keeps its existing component and behavior */
+.route-fade {
+  min-height: calc(100vh - 64px);
+  animation: routeFadeIn 300ms cubic-bezier(.2,.75,.25,1) both;
+}
+.route-fade .premium-panel { animation: surfaceFadeIn 360ms ease both; }
+.route-fade .premium-panel:nth-of-type(2) { animation-delay: 35ms; }
+.route-fade .premium-panel:nth-of-type(3) { animation-delay: 65ms; }
+.route-fade .premium-panel:nth-of-type(4) { animation-delay: 90ms; }
+@keyframes routeFadeIn {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes surfaceFadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 1024px) {
+  .app-content > div > .sticky:first-child, .app-content > div > .bg-card.border-b:first-child { top: 64px; }
+  .app-content > div > .max-w-2xl, .app-content > div > .max-w-4xl { max-width: 960px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
