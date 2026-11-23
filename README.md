@@ -1,4 +1,4 @@
-# Open Debate — React Debate Platform Starter Kit
+﻿# Open Debate — React Debate Platform Starter Kit
 
 A polished React starter kit for building a topic-based debate and discussion experience. The English edition includes a warm ivory-and-gold interface, responsive layouts, light/dark themes, sample discussions, and interactive client-side flows.
 
@@ -57,7 +57,7 @@ npm run build
 npm run preview
 ```
 
-The production files are written to `dist/`. Package versions are pinned in `package.json`. This archive does not include an npm lockfile, so generate and commit one with `npm install` before maintaining the project or making repeatable releases.
+The production files are written to `dist/`. Package versions are pinned in `package.json`. The archive includes `package-lock.json` to help ensure repeatable dependency installation. Run `npm ci` to install the pinned dependencies.
 
 ## Demo content and local storage
 
